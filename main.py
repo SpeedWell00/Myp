@@ -1,28 +1,14 @@
-import random
-
-# Function to generate a random array of integers in the range {50, 100}
-def generate_random_array(size):
-    return [random.randint(50, 100) for _ in range(size)]
+# Program to create a dictionary where keys are numbers 1 to 10 and values are their squares
+def create_square_dict():
+    square_dict = {i: i**2 for i in range(1, 11)}  # Dictionary comprehension to create the dictionary
+    return square_dict
 
 # Main function
 def main():
-    # Define the size of the array
-    size = 20  # You can modify this to change the number of elements
-    
-    # Generate the random array
-    random_array = generate_random_array(size)
-    
-    # Display the original array
-    print("Original Array:")
-    print(random_array)
-    
-    # Sort the array using Timsort (Python's built-in sort)
-    sorted_array = sorted(random_array)
-    
-    # Display the sorted array
-    print("\nSorted Array (Ascending Order):")
-    print(sorted_array)
+    square_dict = create_square_dict()
+    print("Dictionary of numbers and their squares:")
+    print(square_dict)
 
-# Call the main function to execute the program
+# Execute the program
 main()
 
