@@ -1,39 +1,47 @@
-# Function to calculate the total weight lifted by each athlete
-def calculate_totals(weights):
-    totals = []
-    for i in range(10):
-        total = sum(weights[i])  # Sum the weights for each athlete
-        totals.append(total)
-    return totals
+# Function to fill the matrix sequentially
+def fill_matrix():
+    matrix = [[0] * 6 for _ in range(6)]  # Create a 6x6 matrix initialized with zeros
+    counter = 1
+    for i in range(6):
+        for j in range(6):
+            matrix[i][j] = counter
+            counter += 1
+    return matrix
 
-# Function to determine the winner
-def find_winner(totals):
-    max_weight = max(totals)
-    winner_index = totals.index(max_weight)
-    return winner_index, max_weight
+# Function to rotate the matrix 90 degrees clockwise
+def rotate_matrix_90(matrix):
+    n = len(matrix)
+    # Create a new matrix for the rotated result
+    rotated = [[0] * n for _ in range(n)]
+    
+    # Rotate the matrix 90 degrees clockwise
+    for i in range(n):
+        for j in range(n):
+            rotated[j][n - i - 1] = matrix[i][j]
+    
+    return rotated
+
+# Function to print the matrix
+def print_matrix(matrix):
+    for row in matrix:
+        print(" ".join(map(str, row)))
+    print()  # Add an extra line for spacing
 
 # Main program
 def main():
-    # Initialize the 2D array M[10][3] with zeros
-    M = [[0] * 3 for _ in range(10)]
+    # Step 1: Fill the matrix with values
+    matrix = fill_matrix()
     
-    # Fill the array with user input
-    print("Enter the weight lifted by each athlete in 3 events:")
-    for i in range(10):
-        for j in range(3):
-            M[i][j] = float(input(f"Enter weight for athlete {i+1}, event {j+1}: "))
+    # Step 2: Display the original matrix
+    print("Original Matrix:")
+    print_matrix(matrix)
     
-    # Calculate the total weight lifted by each athlete
-    totals = calculate_totals(M)
+    # Step 3: Rotate the matrix 90 degrees clockwise
+    rotated_matrix = rotate_matrix_90(matrix)
     
-    # Output the total weights lifted by each athlete
-    print("\nTotal weight lifted by each athlete:")
-    for i in range(10):
-        print(f"Athlete {i+1}: {totals[i]} kg")
-    
-    # Find and output the winner
-    winner_index, max_weight = find_winner(totals)
-    print(f"\nThe winner is Athlete {winner_index+1} with a total weight of {max_weight} kg.")
+    # Step 4: Display the rotated matrix
+    print("Matrix after 90° Clockwise Rotation:")
+    print_matrix(rotated_matrix)
 
 # Run the program
 if __name__ == "__main__":
