@@ -1,19 +1,25 @@
+Task 1: Print all words with exactly 3 letters
 
-Task 1: Printing all countries from a dictionary
+# Input string
+sentence = "Every day may not be good, but there's something good in every day."
 
-# Print all the countries
-print("Countries:")
-for country in countries_and_capitals.keys():
-    print(country)
+# Split the sentence into words
+words = sentence.split()
 
-Task 2: Printing unique numbers from a list
+# Filter words with exactly 3 letters
+three_letter_words = [word.strip(",.'") for word in words if len(word.strip(",.'")) == 3]
 
-# List of numbers
-numbers = [1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9]
+# Print the result
+print("Words with exactly 3 letters:")
+print(three_letter_words)
+Task 2: Convert the entire string into capital letters
 
-# Get unique numbers using a set
-unique_numbers = list(set(numbers))
+# Input string
+sentence = "Every day may not be good, but there's something good in every day."
 
-# Print the unique numbers
-print("Unique numbers:")
-print(unique_numbers)
+# Convert the string to uppercase
+uppercase_sentence = sentence.upper()
+
+# Print the result
+print("Uppercase sentence:")
+print(uppercase_sentence)
