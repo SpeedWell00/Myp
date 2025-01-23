@@ -1,58 +1,28 @@
-# Subroutine to input array elements from the keyboard
-def input_array(n):
-    array = []
-    for i in range(n):
-        element = float(input(f"Enter element {i+1}: "))
-        array.append(element)
-    return array
+import random
 
-# Subroutine to display array elements
-def display_array(array):
-    print("Array elements: ", end="")
-    for element in array:
-        print(f"{element:.2f}", end=" ")
-    print()  # For newline
+# Function to generate a random array of integers in the range {50, 100}
+def generate_random_array(size):
+    return [random.randint(50, 100) for _ in range(size)]
 
-# Subroutine to calculate the arithmetic mean of positive elements
-def mean_of_positive_elements(array):
-    positive_elements = [x for x in array if x > 0]
-    if positive_elements:  # Ensure that there are positive elements
-        return sum(positive_elements) / len(positive_elements)
-    else:
-        return 0  # No positive elements
-
-# Main subroutine
+# Main function
 def main():
-    n = 14  # Number of elements in each array
+    # Define the size of the array
+    size = 20  # You can modify this to change the number of elements
     
-    # Input arrays A and B
-    print("Enter elements for array A:")
-    A = input_array(n)
+    # Generate the random array
+    random_array = generate_random_array(size)
     
-    print("Enter elements for array B:")
-    B = input_array(n)
+    # Display the original array
+    print("Original Array:")
+    print(random_array)
     
-    # Create array C where each element is min(A[k], B[k])
-    C = [min(A[k], B[k]) for k in range(n)]
+    # Sort the array using Timsort (Python's built-in sort)
+    sorted_array = sorted(random_array)
     
-    # Display the arrays
-    print("\nArray A:")
-    display_array(A)
-    
-    print("Array B:")
-    display_array(B)
-    
-    print("Array C:")
-    display_array(C)
-    
-    # Calculate and display the mean of positive elements for each array
-    mean_A = mean_of_positive_elements(A)
-    mean_B = mean_of_positive_elements(B)
-    mean_C = mean_of_positive_elements(C)
-    
-    print(f"\nArithmetic mean of positive elements in A: {mean_A:.2f}")
-    print(f"Arithmetic mean of positive elements in B: {mean_B:.2f}")
-    print(f"Arithmetic mean of positive elements in C: {mean_C:.2f}")
+    # Display the sorted array
+    print("\nSorted Array (Ascending Order):")
+    print(sorted_array)
 
 # Call the main function to execute the program
 main()
+
