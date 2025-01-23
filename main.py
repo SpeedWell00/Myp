@@ -1,50 +1,58 @@
-# Function to calculate the sum of a and b
-def sum_ab(a, b):
-    return a + b
+# Subroutine to input array elements from the keyboard
+def input_array(n):
+    array = []
+    for i in range(n):
+        element = float(input(f"Enter element {i+1}: "))
+        array.append(element)
+    return array
 
-# Function to calculate the difference of c and d
-def diff_cd(c, d):
-    return c - d
+# Subroutine to display array elements
+def display_array(array):
+    print("Array elements: ", end="")
+    for element in array:
+        print(f"{element:.2f}", end=" ")
+    print()  # For newline
 
-# Function to calculate the product of e and f
-def prod_ef(e, f):
-    return e * f
+# Subroutine to calculate the arithmetic mean of positive elements
+def mean_of_positive_elements(array):
+    positive_elements = [x for x in array if x > 0]
+    if positive_elements:  # Ensure that there are positive elements
+        return sum(positive_elements) / len(positive_elements)
+    else:
+        return 0  # No positive elements
 
-# Function to calculate the power of g raised to h
-def power_gh(g, h):
-    return g ** h
-
-# Function to calculate the final expression
-def calculate_expression(a, b, c, d, e, f, g, h):
-    part1 = sum_ab(a, b)
-    part2 = diff_cd(c, d)
-    part3 = prod_ef(e, f)
-    part4 = power_gh(g, h)
-    
-    # Ensure no division by zero occurs
-    if part2 == 0:
-        return "Error: Division by zero!"
-    
-    # Calculate the full expression
-    result = (part1 / part2) + part3 - part4
-    return result
-
+# Main subroutine
 def main():
-    # Input values for the variables
-    a = float(input("Enter value for a: "))
-    b = float(input("Enter value for b: "))
-    c = float(input("Enter value for c: "))
-    d = float(input("Enter value for d: "))
-    e = float(input("Enter value for e: "))
-    f = float(input("Enter value for f: "))
-    g = float(input("Enter value for g: "))
-    h = float(input("Enter value for h: "))
+    n = 14  # Number of elements in each array
     
-    # Calculate the expression
-    result = calculate_expression(a, b, c, d, e, f, g, h)
+    # Input arrays A and B
+    print("Enter elements for array A:")
+    A = input_array(n)
     
-    # Output the result
-    print(f"The result of the expression is: {result}")
+    print("Enter elements for array B:")
+    B = input_array(n)
+    
+    # Create array C where each element is min(A[k], B[k])
+    C = [min(A[k], B[k]) for k in range(n)]
+    
+    # Display the arrays
+    print("\nArray A:")
+    display_array(A)
+    
+    print("Array B:")
+    display_array(B)
+    
+    print("Array C:")
+    display_array(C)
+    
+    # Calculate and display the mean of positive elements for each array
+    mean_A = mean_of_positive_elements(A)
+    mean_B = mean_of_positive_elements(B)
+    mean_C = mean_of_positive_elements(C)
+    
+    print(f"\nArithmetic mean of positive elements in A: {mean_A:.2f}")
+    print(f"Arithmetic mean of positive elements in B: {mean_B:.2f}")
+    print(f"Arithmetic mean of positive elements in C: {mean_C:.2f}")
 
-# Call the main function to run the program
+# Call the main function to execute the program
 main()
