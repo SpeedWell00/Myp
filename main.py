@@ -1,30 +1,26 @@
-Task 1: Print reciprocal if negative, square if positive
+Task 1: Calculate the formula and print the result with its data type
 
-# Input the number
-n = float(input("Enter a number: "))
+# Formula calculation
+result1 = (5 * 3 - (9 // 3) ** 2) / 3.6
 
-# Check if the number is negative or positive
-if n < 0:
-    result = 1 / n  # Reciprocal for negative numbers
-    print(f"The reciprocal of {n} is {result}")
-elif n > 0:
-    result = n ** 2  # Square for positive numbers
-    print(f"The square of {n} is {result}")
-else:
-    print("The number is zero, no reciprocal or square exists.")
+# Print the result and its data type
+print("Result of the formula:", result1)
+print("Data type:", type(result1))
 
-Task 2: Calculate the value of the function f(x)
+Task 2: Create a string and print the result with its data type
 
-# Input the value of x
-x = float(input("Enter the value of x: "))
+# Create a string with 4 copies of "ML" separated by "*"
+result2 = "*".join(["ML"] * 4)
 
-# Calculate the value of the function based on x
-if x > 9:
-    f_x = x ** 3 + 9
-elif x < 9:
-    f_x = 9 * x - 1
-else:  # x == 9
-    f_x = 720
+# Print the result and its data type
+print("Resulting string:", result2)
+print("Data type:", type(result2))
 
-# Print the result
-print(f"The value of f(x) for x = {x} is {f_x}")
+Task 3: Calculate the result and print it with its data type
+
+# Formula calculation
+result3 = 6 * 6 - 8 // 2 ** 4 / 4
+
+# Print the result and its data type
+print("Result of the calculation:", result3)
+print("Data type:", type(result3))
