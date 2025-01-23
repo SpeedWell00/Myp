@@ -1,20 +1,31 @@
-Task 1: Split the line by spaces and print each word on a new line
+import random
 
-# Input line
-line1 = "Our technology forces us to live mythically, but we continue to think fragmentarily, and on single, separate, and mechanical levels. - Marshall McLuhan"
+# Generate a 2D array with random numbers between 4 and 67
+rows = 5  # Number of rows in the 2D array
+cols = 4  # Number of columns in the 2D array
 
-# Split the line by spaces and print each word on a new line
-words = line1.split()
-for word in words:
-    print(word)
+# Create a 2D array with random integers between 4 and 67
+array = [[random.randint(4, 67) for _ in range(cols)] for _ in range(rows)]
 
-Task 2: Find the number of occurrences of the word “technology”
+# Display the original array
+print("Original Array:")
+for row in array:
+    print(row)
 
-# Input line
-line2 = "We've arranged a civilization in which most crucial elements profoundly depend on science and technology. - Carl Sagan"
+# Bubble Sort for the last column
+def bubble_sort_last_column(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            # Compare the last column elements of adjacent rows
+            if arr[j][cols-1] > arr[j+1][cols-1]:
+                # Swap rows if they are in the wrong order
+                arr[j], arr[j+1] = arr[j+1], arr[j]
 
-# Count occurrences of the word "technology"
-word_count = line2.lower().split().count("technology")
+# Sort the array based on the last column
+bubble_sort_last_column(array)
 
-# Print the result
-print("The word 'technology' appears", word_count, "time(s).")
+# Display the sorted array
+print("\nSorted Array (based on the last column):")
+for row in array:
+    print(row)
