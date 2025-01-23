@@ -1,30 +1,50 @@
-def rotate_matrix(matrix):
-    n = len(matrix)
-    rotated_matrix = [[0] * n for _ in range(n)]
-    
-    # Perform 90° counterclockwise rotation
-    for i in range(n):
-        for j in range(n):
-            rotated_matrix[n-j-1][i] = matrix[i][j]
-    
-    return rotated_matrix
+# Function to calculate the sum of a and b
+def sum_ab(a, b):
+    return a + b
 
-def display_matrix(matrix):
-    for row in matrix:
-        print(" ".join(map(str, row)))
+# Function to calculate the difference of c and d
+def diff_cd(c, d):
+    return c - d
+
+# Function to calculate the product of e and f
+def prod_ef(e, f):
+    return e * f
+
+# Function to calculate the power of g raised to h
+def power_gh(g, h):
+    return g ** h
+
+# Function to calculate the final expression
+def calculate_expression(a, b, c, d, e, f, g, h):
+    part1 = sum_ab(a, b)
+    part2 = diff_cd(c, d)
+    part3 = prod_ef(e, f)
+    part4 = power_gh(g, h)
+    
+    # Ensure no division by zero occurs
+    if part2 == 0:
+        return "Error: Division by zero!"
+    
+    # Calculate the full expression
+    result = (part1 / part2) + part3 - part4
+    return result
 
 def main():
-    # Create and fill the 6x6 matrix with integers from 1 to 36
-    matrix = [[(i * 6) + j + 1 for j in range(6)] for i in range(6)]
+    # Input values for the variables
+    a = float(input("Enter value for a: "))
+    b = float(input("Enter value for b: "))
+    c = float(input("Enter value for c: "))
+    d = float(input("Enter value for d: "))
+    e = float(input("Enter value for e: "))
+    f = float(input("Enter value for f: "))
+    g = float(input("Enter value for g: "))
+    h = float(input("Enter value for h: "))
     
-    print("Original Matrix:")
-    display_matrix(matrix)
+    # Calculate the expression
+    result = calculate_expression(a, b, c, d, e, f, g, h)
     
-    # Rotate the matrix 90° counterclockwise
-    rotated_matrix = rotate_matrix(matrix)
-    
-    print("\nRotated Matrix (90° counterclockwise):")
-    display_matrix(rotated_matrix)
+    # Output the result
+    print(f"The result of the expression is: {result}")
 
-# Call the main function to execute the program
+# Call the main function to run the program
 main()
