@@ -1,42 +1,40 @@
-# Recursive function to calculate x^n
-def power(x, n):
-    # Base case: x^0 = 1
-    if n == 0:
-        return 1
-    # Case when n < 0: we use the absolute value of n
-    elif n < 0:
-        return power(abs(x), n)  # We take the absolute value when n < 0
-    # Case when n > 0: multiply x by the result of x^(n-1)
-    else:
-        return x * power(x, n - 1)
+# Function to calculate the total weight lifted by each athlete
+def calculate_totals(weights):
+    totals = []
+    for i in range(10):
+        total = sum(weights[i])  # Sum the weights for each athlete
+        totals.append(total)
+    return totals
 
-# Function to calculate the expression (x^k - x^m) / (x^k + x^m)
-def calculate_expression(x, k, m):
-    # Using the recursive power function
-    xk = power(x, k)
-    xm = power(x, m)
-    
-    # Calculate the expression
-    numerator = xk - xm
-    denominator = xk + xm
-    
-    # Handle the case where the denominator might be 0 to avoid division by zero
-    if denominator == 0:
-        return "Error: Division by zero"
-    
-    return numerator / denominator
+# Function to determine the winner
+def find_winner(totals):
+    max_weight = max(totals)
+    winner_index = totals.index(max_weight)
+    return winner_index, max_weight
 
-# Main function to get input and output the result
+# Main program
 def main():
-    # Get user input for x, k, and m
-    x = float(input("Enter the real number x: "))
-    k = int(input("Enter the integer value k: "))
-    m = int(input("Enter the integer value m: "))
+    # Initialize the 2D array M[10][3] with zeros
+    M = [[0] * 3 for _ in range(10)]
     
-    # Calculate and display the result
-    result = calculate_expression(x, k, m)
-    print(f"The result of the expression (x^k - x^m) / (x^k + x^m) is: {result}")
+    # Fill the array with user input
+    print("Enter the weight lifted by each athlete in 3 events:")
+    for i in range(10):
+        for j in range(3):
+            M[i][j] = float(input(f"Enter weight for athlete {i+1}, event {j+1}: "))
+    
+    # Calculate the total weight lifted by each athlete
+    totals = calculate_totals(M)
+    
+    # Output the total weights lifted by each athlete
+    print("\nTotal weight lifted by each athlete:")
+    for i in range(10):
+        print(f"Athlete {i+1}: {totals[i]} kg")
+    
+    # Find and output the winner
+    winner_index, max_weight = find_winner(totals)
+    print(f"\nThe winner is Athlete {winner_index+1} with a total weight of {max_weight} kg.")
 
-# Run the main function
+# Run the program
 if __name__ == "__main__":
     main()
