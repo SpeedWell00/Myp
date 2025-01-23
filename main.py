@@ -1,26 +1,58 @@
-Task 1: Calculate the formula and print the result with its data type
+Task 1: Create a Matrix class with an output method
 
-# Formula calculation
-result1 = (5 * 3 - (9 // 3) ** 2) / 3.6
+class Matrix:
+    def _init_(self, matrix):
+        # Initialize with a two-dimensional list (matrix)
+        self.matrix = matrix
 
-# Print the result and its data type
-print("Result of the formula:", result1)
-print("Data type:", type(result1))
+    def display(self):
+        # Method to display the matrix
+        for row in self.matrix:
+            print(row)
 
-Task 2: Create a string and print the result with its data type
+# Example usage
+matrix1 = Matrix([[1, 2], [3, 4]])
+matrix1.display()
 
-# Create a string with 4 copies of "ML" separated by "*"
-result2 = "*".join(["ML"] * 4)
+Task 2: Add a method to calculate the sum of two matrices
 
-# Print the result and its data type
-print("Resulting string:", result2)
-print("Data type:", type(result2))
+class Matrix:
+    def _init_(self, matrix):
+        # Initialize with a two-dimensional list (matrix)
+        self.matrix = matrix
 
-Task 3: Calculate the result and print it with its data type
+    def display(self):
+        # Method to display the matrix
+        for row in self.matrix:
+            print(row)
 
-# Formula calculation
-result3 = 6 * 6 - 8 // 2 ** 4 / 4
+    def add(self, other):
+        # Method to add two matrices
+        if len(self.matrix) != len(other.matrix) or len(self.matrix[0]) != len(other.matrix[0]):
+            raise ValueError("Matrices must be of the same size")
+        
+        # Matrix addition
+        result = []
+        for i in range(len(self.matrix)):
+            row = []
+            for j in range(len(self.matrix[0])):
+                row.append(self.matrix[i][j] + other.matrix[i][j])
+            result.append(row)
+        
+        return Matrix(result)
 
-# Print the result and its data type
-print("Result of the calculation:", result3)
-print("Data type:", type(result3))
+# Example usage
+matrix1 = Matrix([[1, 2], [3, 4]])
+matrix2 = Matrix([[5, 6], [7, 8]])
+
+print("Matrix 1:")
+matrix1.display()
+
+print("Matrix 2:")
+matrix2.display()
+
+# Adding matrices
+sum_matrix = matrix1.add(matrix2)
+
+print("Sum of Matrix 1 and Matrix 2:")
+sum_matrix.display()
