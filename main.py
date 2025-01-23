@@ -1,32 +1,41 @@
-# Function to calculate the minimum of a list
-def calculate_min(numbers):
-    return min(numbers)
+# Recursive function to calculate x^n
+def power(x, n):
+    # Base case: x^0 = 1
+    if n == 0:
+        return 1
+    # Case when n < 0: we use the absolute value of n
+    elif n < 0:
+        return power(abs(x), n)  # We take the absolute value when n < 0
+    # Case when n > 0: multiply x by the result of x^(n-1)
+    else:
+        return x * power(x, n - 1)
 
-# Function to calculate the maximum of a list
-def calculate_max(numbers):
-    return max(numbers)
+# Function to calculate the expression (x^k - x^m) / (x^k + x^m)
+def calculate_expression(x, k, m):
+    # Using the recursive power function
+    xk = power(x, k)
+    xm = power(x, m)
+    
+    # Calculate the expression
+    numerator = xk - xm
+    denominator = xk + xm
+    
+    # Handle the case where the denominator might be 0 to avoid division by zero
+    if denominator == 0:
+        return "Error: Division by zero"
+    
+    return numerator / denominator
 
-# Function to calculate the sum of a list
-def calculate_sum(numbers):
-    return sum(numbers)
-
-# Main function to execute the task
+# Main function to get input and output the result
 def main():
-    # Step 1: Take input from the user (comma-separated numbers)
-    input_data = input("Enter numbers separated by commas: ")
+    # Get user input for x, k, and m
+    x = float(input("Enter the real number x: "))
+    k = int(input("Enter the integer value k: "))
+    m = int(input("Enter the integer value m: "))
     
-    # Step 2: Convert input string to a list of numbers
-    numbers = [float(num) for num in input_data.split(",")]
-    
-    # Step 3: Calculate the results
-    minimum = calculate_min(numbers)
-    maximum = calculate_max(numbers)
-    total_sum = calculate_sum(numbers)
-    
-    # Step 4: Output the results
-    print(f"Minimum value: {minimum}")
-    print(f"Maximum value: {maximum}")
-    print(f"Sum of values: {total_sum}")
+    # Calculate and display the result
+    result = calculate_expression(x, k, m)
+    print(f"The result of the expression (x^k - x^m) / (x^k + x^m) is: {result}")
 
 # Run the main function
 if __name__ == "__main__":
