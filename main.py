@@ -1,25 +1,23 @@
-Task 1: Print all words with exactly 3 letters
+Task 1: Insert element 6 in the 3rd place of the list
 
-# Input string
-sentence = "Every day may not be good, but there's something good in every day."
+# Source list
+source_list = [1, 2, 3, 4, 5]
 
-# Split the sentence into words
-words = sentence.split()
+# Insert element 6 in the 3rd place (index 2)
+source_list.insert(2, 6)
 
-# Filter words with exactly 3 letters
-three_letter_words = [word.strip(",.'") for word in words if len(word.strip(",.'")) == 3]
+# Print the updated list
+print("Updated list after inserting 6 in the 3rd place:")
+print(source_list)
 
-# Print the result
-print("Words with exactly 3 letters:")
-print(three_letter_words)
-Task 2: Convert the entire string into capital letters
+Task 2: Insert element 0 at the beginning of the list
 
-# Input string
-sentence = "Every day may not be good, but there's something good in every day."
+# Source list
+source_list = [1, 2, 3, 4, 5]
 
-# Convert the string to uppercase
-uppercase_sentence = sentence.upper()
+# Insert element 0 at the beginning (index 0)
+source_list.insert(0, 0)
 
-# Print the result
-print("Uppercase sentence:")
-print(uppercase_sentence)
+# Print the updated list
+print("Updated list after inserting 0 at the beginning:")
+print(source_list)
